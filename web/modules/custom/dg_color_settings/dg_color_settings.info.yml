@@ -1,4 +1,0 @@
-name: option settings
-type: module
-description: poll setiings
-core_version_requirement: ^8 || ^9
