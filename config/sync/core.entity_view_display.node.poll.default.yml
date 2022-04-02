@@ -1,0 +1,54 @@
+uuid: 40468a26-f7a8-4896-9d01-7a161d34562d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.poll.body
+    - field.field.node.poll.field_expired_on
+    - field.field.node.poll.field_is_editable
+    - field.field.node.poll.field_options
+    - field.field.node.poll.field_private_poll
+    - node.type.poll
+  module:
+    - datetime
+    - text
+    - user
+id: node.poll.default
+targetEntityType: node
+bundle: poll
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_expired_on:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_private_poll:
+    type: boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_is_editable: true
+  field_options: true

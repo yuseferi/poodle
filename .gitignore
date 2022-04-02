@@ -30,3 +30,4 @@ private
 .drush
 drush-backups
 .console
+_db

@@ -1,0 +1,5 @@
+name: poodle
+type: module
+description: Poodle
+package: Custom
+core_version_requirement: ^9 || ^10

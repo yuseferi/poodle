@@ -1,0 +1,25 @@
+uuid: 7b2d87be-1066-411b-b773-636f3aee5b68
+langcode: en
+status: true
+dependencies:
+  module:
+    - poodle
+    - system
+  theme:
+    - myolivero
+id: poll
+theme: myolivero
+region: content
+weight: 0
+provider: null
+plugin: poodle_poll
+settings:
+  id: poodle_poll
+  label: Poll
+  label_display: '0'
+  provider: poodle
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/poll/*'

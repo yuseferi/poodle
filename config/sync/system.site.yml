@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: 9ba6e1db-51a1-4e7d-a8d0-139f4861f73a
+name: Poodle!
+mail: yusef@digitalgarden.com.au
+slogan: 'simple Polling system for your team events'
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

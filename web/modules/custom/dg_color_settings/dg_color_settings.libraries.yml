@@ -1,0 +1,9 @@
+dg_color:
+  js:
+    js/dg_color.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+  css:
+    theme:
+      css/dg_style.css: {}

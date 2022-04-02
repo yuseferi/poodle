@@ -1,0 +1,6 @@
+services:
+  dg_color_settings_twig_function:
+    class: Drupal\dg_color_settings\ColorFunction
+    arguments: [ '@config.factory' ]
+    tags:
+      - { name: twig.extension }

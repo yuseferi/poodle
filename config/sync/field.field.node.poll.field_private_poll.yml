@@ -1,0 +1,23 @@
+uuid: 35556bd7-7310-4e68-8010-36be9aeacf3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private_poll
+    - node.type.poll
+id: node.poll.field_private_poll
+field_name: field_private_poll
+entity_type: node
+bundle: poll
+label: 'Private poll'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

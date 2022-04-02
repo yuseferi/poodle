@@ -1,0 +1,23 @@
+uuid: 92201c01-6234-420d-9358-6817102be7e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.poll
+  module:
+    - text
+id: node.poll.body
+field_name: body
+entity_type: node
+bundle: poll
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,39 @@
+dg_color_settings.msf_config:
+  title: 'MSF configuration'
+  route_name: "<nolink>"
+  parent: system.admin
+  description: 'Parent menu item'
+  weight: -5
+dg_color_settings.menu_parent:
+  title: Color settings
+  route_name: dg_color_settings.color_choose_config_form
+  parent: dg_color_settings.msf_config
+  description: 'Parent menu item'
+  weight: 3
+
+dg_color_settings.color_config_form:
+  title: "Guideline color seetings"
+  route_name: dg_color_settings.color_config_form
+  parent: dg_color_settings.menu_parent
+  description: 'Guidelines color settings'
+  weight: 2
+
+dg_color_settings.color_choose_config_form:
+  title: "Color list settings"
+  route_name: dg_color_settings.color_choose_config_form
+  parent: dg_color_settings.menu_parent
+  description: 'Color list'
+  weight: 3
+
+dg_color_settings.alert_color_choose_config_form:
+  title: "Alert color settings"
+  route_name: dg_color_settings.alert_color_choose_config_form
+  parent: dg_color_settings.menu_parent
+  description: 'Alert color settings'
+  weight: 4
+
+dg_color_settings.box_colors:
+  title: 'Ckeditor box color settings'
+  route_name: dg_color_settings.box_colors
+  parent: dg_color_settings.menu_parent
+  weight: 99

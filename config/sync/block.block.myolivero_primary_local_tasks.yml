@@ -1,0 +1,22 @@
+uuid: bd14a3e8-42c1-44b7-a39c-70a0c77a219d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - myolivero
+_core:
+  default_config_hash: 9R1cHn_0HusBHUvAnzHWAfRTO10d3uFjyFphBrYw7fQ
+id: myolivero_primary_local_tasks
+theme: myolivero
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

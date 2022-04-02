@@ -1,0 +1,22 @@
+uuid: 2c8b03b2-38c9-46cf-9273-e3c622c194b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - myolivero
+_core:
+  default_config_hash: ZHCxjatiIdYX3CmY2m-qjUq-Zj7q5pbuH7UOi9OEgrE
+id: myolivero_messages
+theme: myolivero
+region: highlighted
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

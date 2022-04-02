@@ -1,0 +1,21 @@
+uuid: 59658638-2925-473d-aaa8-e874147d779d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expired_on
+    - node.type.poll
+  module:
+    - datetime
+id: node.poll.field_expired_on
+field_name: field_expired_on
+entity_type: node
+bundle: poll
+label: 'Expired on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

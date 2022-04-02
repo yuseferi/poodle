@@ -1,0 +1,20 @@
+uuid: f9fc1299-7bed-4e79-aabe-6887627a29c5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - myolivero
+_core:
+  default_config_hash: EtxYWBsCFNSyc7C_u9qbLxVX-ap9Os4brdhM15DWPNE
+id: myolivero_page_title
+theme: myolivero
+region: content_above
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

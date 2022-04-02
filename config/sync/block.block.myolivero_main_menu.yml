@@ -1,0 +1,27 @@
+uuid: f7d03571-3203-4391-8be3-3f72cd46adef
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - myolivero
+_core:
+  default_config_hash: 0tBcEwIv8d4HMAtDT4CtNloNgeB6ts3gp0hCHg7Fi88
+id: myolivero_main_menu
+theme: myolivero
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility: {  }

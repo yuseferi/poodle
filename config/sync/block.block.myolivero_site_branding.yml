@@ -1,0 +1,25 @@
+uuid: 0e4564f8-deaf-47e9-bc25-c059f41c439a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - myolivero
+_core:
+  default_config_hash: Q9_Pwtvjp4QM1WyjBxRRbKKvEyhOcMKu_FzwnsonwKg
+id: myolivero_site_branding
+theme: myolivero
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

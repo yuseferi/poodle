@@ -1,0 +1,15 @@
+.color-preview1,.color-preview2{
+  width: 40px;
+  height: 40px;
+  margin:auto;
+  display: inline-block;
+  border: 1px solid gray;
+  vertical-align: middle;
+  border-radius: 2px;
+  background: none;
+}
+
+tr .form-item, .container-inline .form-item{
+  display: inline-block;
+  padding-left: 10px;
+}

@@ -1,0 +1,23 @@
+uuid: 2521c4bd-6e4c-4168-921a-a103e51cde62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_editable
+    - node.type.poll
+id: node.poll.field_is_editable
+field_name: field_is_editable
+entity_type: node
+bundle: poll
+label: 'Is Editable'
+description: 'Let users change their votes after the vote'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

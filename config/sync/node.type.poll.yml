@@ -1,0 +1,17 @@
+uuid: 29afa9e3-25f5-41d8-80da-ba876e42039b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Poll
+type: poll
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

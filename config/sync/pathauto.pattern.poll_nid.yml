@@ -1,0 +1,22 @@
+uuid: be3283f0-931d-4aa7-afb2-782389083a2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: poll_nid
+label: 'Poll nid'
+type: 'canonical_entities:node'
+pattern: '/poll/[random:hash:md5]'
+selection_criteria:
+  99871f98-adb8-48b1-88ab-eb45cc96864b:
+    id: node_type
+    negate: false
+    uuid: 99871f98-adb8-48b1-88ab-eb45cc96864b
+    context_mapping:
+      node: node
+    bundles:
+      poll: poll
+selection_logic: and
+weight: -5
+relationships: {  }

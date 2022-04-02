@@ -1,0 +1,4 @@
+administer poodle configuration:
+  title: 'Administer poodle configuration'
+  description: 'Optional description.'
+  restrict access: true

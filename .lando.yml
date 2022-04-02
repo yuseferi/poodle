@@ -1,0 +1,81 @@
+# Name the application the same as in your .platform.app.yaml.
+name: Poodle
+# Use the recipe appropriate for your application.
+recipe: drupal9
+
+config:
+  # Lando defaults to Apache. Switch to nginx to match Platform.sh.
+  via: nginx
+
+  # Set the webroot to match your .platform.app.yaml.
+  webroot: web
+
+  # Lando defaults to the latest MySQL release, but Platform.sh uses MariaDB.
+  # Specify the version to match what's in services.yaml.
+  database: mariadb:10.5
+  # Load php init with Xdebug settings.
+  conf:
+    php: lando/php.ini
+
+proxy:
+  pma:
+    - pma.poodle.lndo.site
+#  mailhog:
+#    - mail.msfmg.lndo.site
+
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+  database:
+    type: mariadb
+    creds:
+      database: poodle
+  appserver:
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=poodle.lndo.site"
+        XDEBUG_CONFIG: "xdebug.mode=debug"
+    run:
+      - "mkdir -p /var/www/.platformsh && mkdir -p /var/www/.platformsh/bin"
+      - "curl -fsSL -o /var/www/.platformsh/bin/platform https://github.com/platformsh/platformsh-cli/releases/download/v3.69.2/platform.phar"
+      - "chmod ug+x /var/www/.platformsh/bin/platform"
+      - "cd $LANDO_MOUNT && composer install"
+# The following entry creates a `lando platform` command that will run
+# any Platform CLI command from inside the container if desired.
+tooling:
+  platform:
+    service: appserver
+    description: Run Platform CLI commands
+    cmd: /var/www/.platformsh/bin/platform
+  phplint:
+    service: appserver
+    cmd: /app/vendor/bin/phplint
+  phpcs:
+    service: appserver
+    cmd: /app/vendor/bin/phpcs
+  phpunit:
+    service: appserver
+    cmd: /app/vendor/bin/phpunit
+  behat:
+    service: appserver
+    cmd: /app/vendor/bin/behat
+  drush:
+    service: appserver
+    cmd: /app/vendor/bin/drush
+    env:
+      DRUSH_OPTIONS_URI: "http://poodle.lndo.site"
+  drupal:
+    service: appserver
+    cmd: /app/vendor/drupal/console/bin/drupal
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for nginx.
+    cmd: docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for nginx.
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+    user: root
