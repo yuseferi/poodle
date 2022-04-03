@@ -7,6 +7,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Cookie;
+
 
 /**
  * Configure Pooddle settings for this site.
@@ -43,8 +45,11 @@ class PollForm extends ConfigFormBase
     $user = User::load(\Drupal::currentUser()->id());
     $isPrivateForm = $node->field_private_poll->getValue()[0]["value"];
     if ($isPrivateForm && $user->id() == 0) {
-      \Drupal::messenger()->addError("This poll is not public and you need to login into the website before vote");
-      $redirect = new RedirectResponse(Url::fromRoute('<front>')->toString());
+
+      \Drupal::messenger()->addWarning("This poll is not public and you need to login into the website before vote");
+      $redirect = new RedirectResponse(Url::fromRoute('user.login')->toString());
+      $cookie = new  Cookie('poll', $node->id());
+      $redirect->headers->setCookie($cookie);
       $redirect->send();
     }
     $isPollEditable = $node->field_is_editable->getValue()[0]["value"];
@@ -116,7 +121,7 @@ class PollForm extends ConfigFormBase
         "#size" => 12,
         '#title_display' => 'invisible',
         "#required" => true,
-//      '#default_value' => $user->g,
+        '#default_value' => $isPrivateForm ? $user->getAccountName() : "",
       ];
 
       foreach ($options as $option) {
@@ -235,17 +240,11 @@ class PollForm extends ConfigFormBase
     $node = \Drupal::routeMatch()->getParameter('node');
     $user = User::load(\Drupal::currentUser()->id());
 
-    $options = $node->field_options->getValue();
     if (isset($form_state->getValue('poll_table')['polls'][$user->id()]) && $form_state->getValue('poll_table')['polls'][$user->id()] != null) {
       $values = $form_state->getValue('poll_table')['polls'][$user->id()];
     } else {
       $values = $form_state->getValue('poll_table')['polls']['new_global_value'];
     }
-    foreach ($options as $option) {
-      $key = "node" . $node->id() . "__" . self::createMachineName($option["value"]);
-      \Drupal::messenger()->addStatus($values[$key]);
-    }
-
     $config = \Drupal::getContainer()->get('config.factory')->getEditable('poodle.polls');
     $previousValue = $config->get($node->id());
     $previousValueArray = unserialize($previousValue);

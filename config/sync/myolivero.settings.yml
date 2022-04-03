@@ -4,13 +4,14 @@ third_party_settings:
   shortcut:
     module_link: true
 features:
-  node_user_picture: false
-  comment_user_picture: true
-  comment_user_verification: true
-  favicon: true
+  node_user_picture: 0
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
 logo:
-  use_default: false
+  use_default: 0
+  path: themes/myolivero-drupal-theme/logo.jpeg
 favicon:
-  use_default: true
+  use_default: 1
 mobile_menu_all_widths: 0
 site_branding_bg_color: default

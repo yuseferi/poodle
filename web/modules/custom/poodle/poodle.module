@@ -4,3 +4,40 @@
  * @file
  * Primary module hooks for poodle module.
  */
+
+
+function poodle_form_alter(array &$form, $form_state, $form_id)
+{
+
+
+  if ($form_id == 'user_login_form') {
+    unset($form['links']);
+    hide($form["name"]);
+    hide($form["pass"]);
+    hide($form["actions"]);
+    $form['google'] = [
+      "#markup" => '<a href="/user/login/google"><img src="/themes/myolivero-drupal-theme/images/google-sign-in.png" /> </a>',
+    ];
+  }
+
+  return $form;
+
+}
+//function poodle_preprocess_menu(&$variables)
+//{
+//  dump($variables);
+//  if (isset($variables['menu_name']) && $variables['menu_name'] === 'account') {
+//  }
+//}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function poodle_menu_local_tasks_alter(&$data, $route_name) {
+  if($route_name == 'user.login'  && isset($data['tabs'][0])) {
+    // Remove all tabs from user login form.
+    foreach ($data['tabs'][0] as $key => $tab){
+      $data['tabs'][0][$key]['#access'] = FALSE;
+    }
+  }
+}

@@ -4,11 +4,10 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - node.type.poll
   module:
-    - comment
-    - contact
     - filter
-    - search
+    - node
     - shortcut
     - system
 _core:
@@ -18,11 +17,10 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
-  - 'access comments'
   - 'access content'
   - 'access shortcuts'
-  - 'access site-wide contact form'
-  - 'post comments'
-  - 'search content'
-  - 'skip comment approval'
+  - 'cancel account'
+  - 'create poll content'
+  - 'edit own poll content'
   - 'use text format basic_html'
+  - 'view own unpublished content'

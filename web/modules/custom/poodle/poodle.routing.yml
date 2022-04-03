@@ -13,3 +13,11 @@ poodle.settings_form:
     _form: 'Drupal\poodle\Form\SettingsForm'
   requirements:
     _permission: 'administer poodle configuration'
+
+poodle.login_callback:
+  path: '/login-callback'
+  defaults:
+    _title: 'Login Callback'
+    _controller: '\Drupal\poodle\Controller\LoginCallBackController::build'
+  requirements:
+    _permission: 'access content'
