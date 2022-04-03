@@ -6,6 +6,10 @@ dependencies:
     - field.storage.node.field_expired_on
     - field.storage.node.field_is_editable
     - node.type.poll
+    - system.menu.account
+    - user.role.administrator
+    - user.role.authenticated
+    - user.role.content_editor
   module:
     - datetime
     - node
@@ -407,9 +411,12 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            authenticated: authenticated
+            content_editor: content_editor
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -519,7 +526,7 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_expired_on'
         - 'config:field.storage.node.field_is_editable'
@@ -540,7 +547,37 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_expired_on'
+        - 'config:field.storage.node.field_is_editable'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: user/my-poll
+      menu:
+        type: normal
+        title: 'My Polls'
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: account
+        parent: ''
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_expired_on'
         - 'config:field.storage.node.field_is_editable'
