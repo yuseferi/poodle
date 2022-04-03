@@ -98,21 +98,11 @@
             {{ page.highlighted }}
             {{ page.breadcrumb }}
 
-            {% if page.sidebar %}
-              <div class="sidebar-grid grid-full">
-                <main role="main" class="site-main ie11-autorow">
-                  {{ page.content_above }}
-                  {{ page.content }}
-                </main>
-
-                {{ page.sidebar }}
-              </div>
-            {% else %}
               <main role="main">
                 {{ page.content_above }}
                 {{ page.content }}
               </main>
-            {% endif %}
+
             {{ page.content_below }}
           </div>
         </div>

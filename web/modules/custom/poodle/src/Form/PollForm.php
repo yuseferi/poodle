@@ -65,6 +65,9 @@ class PollForm extends ConfigFormBase
     $form['poll_table'] = [
       '#type' => 'fieldset',
       '#title' => "Poll : " . $node->getTitle(),
+      '#attributes' => [
+        'style' => 'width: 140%;'
+      ],
     ];
     $headers = ["User"];
     foreach ($options as $option) {
@@ -78,7 +81,6 @@ class PollForm extends ConfigFormBase
       "#size" => 4,
       '#empty' => t('Nobody has voted yet'),
     ];
-
     $alreadyVoted = false;
     if ($previousData) {
       foreach ($previousData as $userId => $userData) {
@@ -110,7 +112,7 @@ class PollForm extends ConfigFormBase
             "#required" => true,
             "#disabled" => $disabledToEdit,
             '#options' => [0 => "No", 1 => "yes", "0.5" => "Maybe"],
-            '#default_value' => $userData[$key],
+            '#default_value' => $userData[$key] ?? 0,
           ];
         }
       }

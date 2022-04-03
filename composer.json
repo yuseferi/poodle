@@ -126,6 +126,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "drupal/charts": {
+                "charts": "patches/chart.patch"
+            }
         }
     }
 }
