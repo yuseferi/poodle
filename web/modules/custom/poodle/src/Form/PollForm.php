@@ -58,7 +58,8 @@ class PollForm extends ConfigFormBase
     if (!$isPollEditable) {
       \Drupal::messenger()->addWarning("Notice: this poll is not editable you can not edit your vote after you vote on that!");
     }
-    $previousData = unserialize($config->get($node->id()));
+    $data = $config->get($node->id());
+    $previousData = $data ? unserialize() : null;
     $currenUserId = $user->id();
 //    dump($previousData);
     $form['poll_table'] = [
@@ -247,7 +248,7 @@ class PollForm extends ConfigFormBase
     }
     $config = \Drupal::getContainer()->get('config.factory')->getEditable('poodle.polls');
     $previousValue = $config->get($node->id());
-    $previousValueArray = unserialize($previousValue);
+    $previousValueArray = $previousValue ? unserialize($previousValue) : null;
     $previousValueArray[$user->id()] = $values;
     $config->set($node->id(), serialize($previousValueArray));
     $config->save();
