@@ -17,12 +17,16 @@ class LoginCallBackController extends ControllerBase {
    * Builds the response.
    */
   public function build() {
-
-    $nid = $_COOKIE["poll"];
-    $node = Node::load($nid);
-    $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'.$nid);
-    $redirect = new RedirectResponse($alias);
-    $redirect->send();
+    if(isset($_COOKIE["poll"])) {
+      $nid = $_COOKIE["poll"];
+      $node = Node::load($nid);
+      $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $nid);
+      $redirect = new RedirectResponse($alias);
+      $redirect->send();
+    }else{
+      $redirect = new RedirectResponse("/node/add/poll");
+      $redirect->send();
+    }
 
   }
 
