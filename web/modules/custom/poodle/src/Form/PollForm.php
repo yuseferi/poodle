@@ -66,7 +66,7 @@ class PollForm extends ConfigFormBase
       '#type' => 'fieldset',
       '#title' => "Poll : " . $node->getTitle(),
       '#attributes' => [
-        'style' => 'width: 140%;'
+        'style' => 'width: 130%;'
       ],
     ];
     $headers = ["User"];
