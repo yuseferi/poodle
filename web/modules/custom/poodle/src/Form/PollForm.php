@@ -59,7 +59,7 @@ class PollForm extends ConfigFormBase
       \Drupal::messenger()->addWarning("Notice: this poll is not editable you can not edit your vote after you vote on that!");
     }
     $data = $config->get($node->id());
-    $previousData = $data ? unserialize() : null;
+    $previousData = $data ? unserialize($data) : null;
     $currenUserId = $user->id();
 //    dump($previousData);
     $form['poll_table'] = [
