@@ -44,8 +44,16 @@ class PollForm extends ConfigFormBase
     }
     $user = User::load(\Drupal::currentUser()->id());
     $isPrivateForm = $node->field_private_poll->getValue()[0]["value"];
+    $expireDate = $node->field_expired_on->getValue();
+    $expired = false;
+    if(isset($expireDate[0])) {
+      $expireDate = $expireDate[0]['value'];
+      if(strtotime($expireDate)< time()){
+        $expired = true;
+        \Drupal::messenger()->addWarning("This poll is expired and you are not able to vote on that anymore");
+      }
+    }
     if ($isPrivateForm && $user->id() == 0) {
-
       \Drupal::messenger()->addWarning("This poll is not public and you need to login into the website before vote");
       $redirect = new RedirectResponse(Url::fromRoute('user.login')->toString());
       $cookie = new  Cookie('poll', $node->id());
@@ -92,7 +100,7 @@ class PollForm extends ConfigFormBase
           $alreadyVoted = true;
           $disabledToEdit = false;
         }
-        if ($isPollEditable == 0) {
+        if ($isPollEditable == 0 || $expired) {
           $disabledToEdit = true;
         }
         $form['poll_table']['polls'][$userId]['poll_user'] = [
@@ -117,7 +125,7 @@ class PollForm extends ConfigFormBase
         }
       }
     }
-    if (!$alreadyVoted) {
+    if (!$alreadyVoted && !$expired) {
       // new form
       $form['poll_table']['polls']['new_global_value']['poll_user'] = [
         '#type' => 'textfield',
@@ -141,11 +149,12 @@ class PollForm extends ConfigFormBase
     }
     $form["#tree"] = true;
     hide($form["actions"]);
-//    dump($form);
-    $form['poll_table']['submit'] = [
-      '#type' => 'submit',
-      '#value' => 'submit',
-    ];
+    if(!$isPollEditable == 0 && !$expired) {
+      $form['poll_table']['submit'] = [
+        '#type' => 'submit',
+        '#value' => 'submit',
+      ];
+    }
     $config = $this->configFactory->getEditable('charts.settings');
 
     $chartSettings = $config->get('charts_default_settings');

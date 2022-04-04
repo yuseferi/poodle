@@ -10,7 +10,7 @@ field_name: field_is_editable
 entity_type: node
 bundle: poll
 label: 'Is Editable'
-description: 'Let users change their votes after the vote'
+description: 'Let users change their votes after the user voted'
 required: false
 translatable: false
 default_value:
